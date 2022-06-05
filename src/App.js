@@ -1,24 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
+import styled from 'styled-components';
+import Grid from './components/Grid';
+
+const Container = styled.div`
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  background-color: pink;
+`
 
 function App() {
+  var playerOneBoard = React.createRef();
+  var playerTwoBoard = React.createRef();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Grid ref={playerOneBoard}/>
+      <Grid ref={playerTwoBoard}/>
+    </Container>
   );
 }
 
