@@ -40,9 +40,8 @@ const BoardContainer = styled.div`
 `
 
 function attack(enemyBoard, setEnemyBoard) {
-  console.log(enemyBoard);
   let enemyBoardFiltered = enemyBoard.filter(square => square.attacked === false);
-  let chosenSquareIndex = enemyBoard[Math.floor(Math.random() * enemyBoardFiltered.length)].id;
+  let chosenSquareIndex = enemyBoardFiltered[Math.floor(Math.random() * enemyBoardFiltered.length)].id;
   
   var data = [...enemyBoard];
   data[chosenSquareIndex].attacked = true;
