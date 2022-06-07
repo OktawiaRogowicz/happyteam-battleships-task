@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import styled from 'styled-components';
 import Grid from './components/Grid';
+import React from "react";
 
 const Container = styled.div`
   display: flex;
