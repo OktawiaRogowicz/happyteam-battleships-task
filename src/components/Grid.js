@@ -9,7 +9,22 @@ const Container = styled.div`
     border: 2px solid black;
 
     div {
+        position: relative;
         border: 0.03rem solid grey;
+        overflow: hidden;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+            color: red;
+            position: absolute;
+            top: -1.4rem;
+            font-size: 4rem;
+            margin: 0;
+            line-height: 4rem;
+        }
     }
 `
 
@@ -21,7 +36,7 @@ function Grid({board}) {
                 style={{backgroundColor: square.filled ? "black" : square.isSibling ? "lightgrey" : ""}}
                 key={index}
             >
-                {square.attacked ? "x" : ""}
+                    {square.attacked ? <span>&times;</span> : ""}
             </div>
         );
     });
