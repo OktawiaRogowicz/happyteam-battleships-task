@@ -38,52 +38,45 @@ function getCell(x, y) {
     return true;
 }
 
-function changeCell(board, x, y){
+function changeSiblingCell(board, x, y){
     if(getCell(x, y)) {
         board[x + y * HEIGHT].isSibling = true;
     }
 }
 
 function changeSiblingCells(board, x, y){
-    changeCell(board, x+1, y);
-    changeCell(board, x-1, y);
-    changeCell(board, x+1, y+1);
-    changeCell(board, x, y+1);
-    changeCell(board, x-1, y+1);
-    changeCell(board, x+1, y-1);
-    changeCell(board, x, y-1);
-    changeCell(board, x-1, y-1);
+    changeSiblingCell(board, x+1, y);
+    changeSiblingCell(board, x-1, y);
+    changeSiblingCell(board, x+1, y+1);
+    changeSiblingCell(board, x, y+1);
+    changeSiblingCell(board, x-1, y+1);
+    changeSiblingCell(board, x+1, y-1);
+    changeSiblingCell(board, x, y-1);
+    changeSiblingCell(board, x-1, y-1);
 }
 
-function fillShipCell(board, x, y) {
-    var p = (y) * HEIGHT + x;
+function isFillingShipCellPossible(board, x, y) {
+    var p = y * HEIGHT + x;
     if(!board[p].filled && !board[p].isSibling) {
         return true;
     }
     return false;
 }
 
-function fillShipCells(board, length, x, y, direction) {
+function isFillingShipCellsPossible(board, length, x, y, direction) {
     if(direction == 0) {
         for(let i = 0; i < length; i++) {
-            if(!fillShipCell(board, x, y + i)) return false;
+            if(!isFillingShipCellPossible(board, x, y + i)) return false;
         }
     } else if(direction == 1) {
         for(let i = 0; i < length; i++) {
-            if(!fillShipCell(board, x + i, y)) return false;
+            if(!isFillingShipCellPossible(board, x + i, y)) return false;
         }
     }
     return true;
 }
 
-function createShip(length, board) {
-    var x = Math.floor(Math.random() * (WIDTH - (length - 1)));
-    var y = Math.floor(Math.random() * (HEIGHT - (length - 1)));
-    var direction = Math.floor(Math.random() * 2);
-    console.log("LEN", length, x, y, direction);
-    if(!fillShipCells(board, length, x, y, direction))
-        return false;
-
+function fillShipCells(board, length, x, y, direction) {
     if(direction == 0) {
         for(let i = 0; i < length; i++) {
             var p = (y + i) * HEIGHT + (x);
@@ -97,6 +90,17 @@ function createShip(length, board) {
             changeSiblingCells(board, x+i, y);
         }
     }
+}
+
+function createShip(length, board) {
+    var x = Math.floor(Math.random() * (WIDTH - (length - 1)));
+    var y = Math.floor(Math.random() * (HEIGHT - (length - 1)));
+    var direction = Math.floor(Math.random() * 2);
+
+    if(!isFillingShipCellsPossible(board, length, x, y, direction))
+        return false;
+    fillShipCells(board, length, x, y, direction);
+
     return true;
     
 }
@@ -112,25 +116,6 @@ function createBoard(board) {
 
     return squaresDivs;
 }
-
-const shipsTypes = [
-    {
-        amount: 1,
-        width: 4
-    },
-    {
-        amount: 2,
-        width: 3
-    },
-    {
-        amount: 3,
-        width: 2
-    },
-    {
-        amount: 4,
-        width: 1
-    }
-]
 
 function Grid() {
   var boardContext = React.createRef();
