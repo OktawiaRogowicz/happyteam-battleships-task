@@ -32,13 +32,6 @@ const shakeAnimation = keyframes`
     100% { transform: translate(1px, -2px) rotate(-1deg); }
 `
 
-const floatingAnimation = keyframes`
-    0%   { transform: translate(0,  5px); }
-    50%  { transform: translate(15px, 10px); }
-    75%  { transform: translate(5px, 0px); }   
-    100% { transform: translate(0,  5px); }
-`
-
 const Container = styled.div`
     display: grid;
     grid-template-columns: repeat(10, 2rem);
@@ -46,7 +39,6 @@ const Container = styled.div`
     border: 2px solid rgb(0, 0, 0, 0.35);
     z-index: 1;
     transition: all .2s;
-    //animation: ${floatingAnimation} 3s infinite ease-in-out;
 `
 
 const Square = styled.div`

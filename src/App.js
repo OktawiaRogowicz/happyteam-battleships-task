@@ -4,11 +4,13 @@ import React, {useEffect, useRef, useState} from "react";
 import Board from './components/Board';
 import wave from "./wave.png";
 
-const floatingAnimation = keyframes`
-    0%   { transform: translate(0,  5px); }
-    50%  { transform: translate(15px, 10px); }
-    75%  { transform: translate(5px, 0px); }   
-    100% { transform: translate(0,  5px); }
+const waveAnimation = keyframes`
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 1000px;
+  }
 `
 
 const Container = styled.div`
@@ -43,20 +45,10 @@ const Container = styled.div`
   h2 {
     font-size: 2rem;
     text-transform: uppercase;
-    //animation: ${floatingAnimation} 3s infinite ease-in-out;
     font-family: 'Squada One', cursive;
     letter-spacing: 0.5rem;
     opacity: 0.35;
     color: #BBF0F3;
-  }
-`
-
-const waveAnimation = keyframes`
-  0% {
-    background-position-x: 0;
-  }
-  100% {
-    background-position-x: 1000px;
   }
 `
 
@@ -159,6 +151,7 @@ function App() {
   const [playerTwoBoard, setPlayerTwoBoard] = useState(Board());
 
   function startTheGame() {
+    f
     attack(playerTwoBoard, setPlayerTwoBoard);
   }
 
