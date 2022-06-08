@@ -60,7 +60,7 @@ const Square = styled.div`
 `
 
 const X = styled.span`
-    color: red;
+    color: #A71D31;
     position: absolute;
     top: -1.4rem;
     font-size: 4rem;

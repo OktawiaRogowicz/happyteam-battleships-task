@@ -27,7 +27,7 @@ const Container = styled.div`
   h1 {
     font-size: 7rem;
     text-transform: uppercase;
-    margin: 15% 0 5% 0;
+    margin: 15% 0 0 0;
     //font-family: 'Cinzel Decorative', cursive;
     //font-family: 'Fredericka the Great', cursive;
     font-family: 'Squada One', cursive;
@@ -128,6 +128,22 @@ const BoardContainer = styled.div`
     }
 `
 
+const StartButton = styled.button`
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+  font-family: 'Squada One', cursive;
+  font-size: 4rem;
+  margin: 0;
+  color: #A71D31;
+  transition: 0.25s;
+
+  &:hover, &:active, &:focus {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+`
+
 function attack(enemyBoard, setEnemyBoard) {
   let enemyBoardFiltered = enemyBoard.filter(square => square.attacked === false);
   let chosenSquareIndex = enemyBoardFiltered[Math.floor(Math.random() * enemyBoardFiltered.length)].id;
@@ -149,7 +165,7 @@ function App() {
   return (
     <Container>
       <h1>Battleships</h1>
-      <button onClick={startTheGame}>Start</button>
+      <StartButton onClick={startTheGame}>Start</StartButton>
       <Ocean>
         <Wave/>
         <Wave/>
