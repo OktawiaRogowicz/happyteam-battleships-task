@@ -151,7 +151,6 @@ function App() {
   const [playerTwoBoard, setPlayerTwoBoard] = useState(Board());
 
   function startTheGame() {
-    f
     attack(playerTwoBoard, setPlayerTwoBoard);
   }
 
