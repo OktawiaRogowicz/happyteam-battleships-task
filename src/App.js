@@ -1,7 +1,15 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import Grid from './components/Grid';
 import React, {useEffect, useRef, useState} from "react";
 import Board from './components/Board';
+import wave from "./wave.png";
+
+const floatingAnimation = keyframes`
+    0%   { transform: translate(0,  5px); }
+    50%  { transform: translate(15px, 10px); }
+    75%  { transform: translate(5px, 0px); }   
+    100% { transform: translate(0,  5px); }
+`
 
 const Container = styled.div`
   display: flex;
@@ -12,22 +20,95 @@ const Container = styled.div`
   padding: 2rem 10rem 2rem 10rem;
   justify-content: center;
   align-items: center;
+  position: relative;
+
+  background: -webkit-linear-gradient(90deg, #BBF0F3 0%, #DEEBDD 100%);
 
   h1 {
     font-size: 7rem;
     text-transform: uppercase;
-    margin: 0;
+    margin: 15% 0 5% 0;
+    //font-family: 'Cinzel Decorative', cursive;
+    //font-family: 'Fredericka the Great', cursive;
+    font-family: 'Squada One', cursive;
+    //font-family: 'Nixie One', cursive;
+    color: #dee5ec;
+    background: -webkit-linear-gradient(90deg, rgba(3,89,112,1) 0%, rgba(54,131,148,1) 100%);
+    opacity: 0.5;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1rem;
   }
 
   h2 {
     font-size: 2rem;
     text-transform: uppercase;
+    //animation: ${floatingAnimation} 3s infinite ease-in-out;
+    font-family: 'Squada One', cursive;
+    letter-spacing: 0.5rem;
+    opacity: 0.35;
+    color: #BBF0F3;
+  }
+`
+
+const waveAnimation = keyframes`
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 1000px;
+  }
+`
+
+const Ocean = styled.div`
+  height: 40%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgb(3,89,112);
+  background: linear-gradient(180deg, rgba(3,89,112,1) 0%, rgba(54,131,148,1) 100%);
+`
+
+const Wave = styled.div`
+  height: 100px;
+  width: 100%;
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg") repeat-x;
+  background-size: 1000px 100px;
+  animation: ${waveAnimation} 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  transform: translate3d(0, 0, 0);
+
+  :nth-child(1) {
+    opacity: 0.5;
+    animation-delay: 1s;
+    animation-duration: 6s;
+  }
+
+  :nth-child(2) {
+    opacity: 0.2;
+    animation-delay: -2s;
+    animation-duration: 8s;
+  }
+
+  :nth-child(4) {
+    opacity: 0.7;
+    animation-delay: 3s;
+    animation-duration: 6s;
+  }
+
+  :nth-child(4) {
+    opacity: 0.3;
+    animation-delay: -1s;
   }
 `
 
 const BoardsContainer = styled.div`
   display: flex;
   flex-direction: row;
+  perspective: 800px;
 `
 
 const BoardContainer = styled.div`
@@ -37,6 +118,14 @@ const BoardContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 2rem 0 2rem;
+  transform-style: preserve-3d;
+  transform: rotateX(60deg);
+
+  :nth-child(1) {
+      & > * {
+        animation-delay: 1s;
+      }
+    }
 `
 
 function attack(enemyBoard, setEnemyBoard) {
@@ -60,17 +149,23 @@ function App() {
   return (
     <Container>
       <h1>Battleships</h1>
+      <button onClick={startTheGame}>Start</button>
+      <Ocean>
+        <Wave/>
+        <Wave/>
+        <Wave/>
+        <Wave/>
+      </Ocean>
       <BoardsContainer>
         <BoardContainer>
-          <h2>Player 1</h2>
           <Grid board={playerOneBoard}/>
+          <h2>Player 1</h2>
         </BoardContainer>
         <BoardContainer>
-          <h2>Player 2</h2>
           <Grid board={playerTwoBoard}/>
+          <h2>Player 2</h2>
         </BoardContainer>
       </BoardsContainer>
-      <button onClick={startTheGame}>Start</button>
     </Container>
   );
 }
