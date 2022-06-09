@@ -2,7 +2,6 @@ import styled, {keyframes} from 'styled-components';
 import Grid from './components/Grid';
 import React, {useEffect, useRef, useState} from "react";
 import Board from './components/Board';
-import wave from "./wave.png";
 
 const waveAnimation = keyframes`
   0% {
@@ -136,28 +135,54 @@ const StartButton = styled.button`
   }
 `
 
+function hasUserWon(enemyBoard) {
+  let enemyBoardFiltered = enemyBoard.filter(square => square.attacked === false && square.filled === true );
+  if(enemyBoardFiltered.length === 0) {
+    return true;
+  }
+  return false;
+}
+
 function attack(enemyBoard, setEnemyBoard) {
   let enemyBoardFiltered = enemyBoard.filter(square => square.attacked === false);
   let chosenSquareIndex = enemyBoardFiltered[Math.floor(Math.random() * enemyBoardFiltered.length)].id;
   
   var data = [...enemyBoard];
   data[chosenSquareIndex].attacked = true;
-
   setEnemyBoard(data);
+}
+
+function sleep(time){
+  return new Promise((resolve)=>setTimeout(resolve,time)
+)
 }
 
 function App() {
   const [playerOneBoard, setPlayerOneBoard] = useState(Board());
   const [playerTwoBoard, setPlayerTwoBoard] = useState(Board());
+  const [whichPlayerWon, setWhichPlayerWon] = useState(null);
 
-  function startTheGame() {
-    attack(playerTwoBoard, setPlayerTwoBoard);
+  async function startTheGame() {
+
+    while(!whichPlayerWon) {
+      await sleep(1000).then(()=>{
+        attack(playerTwoBoard, setPlayerTwoBoard);
+        if(hasUserWon(playerTwoBoard))
+          setWhichPlayerWon(1);
+      });
+      await sleep(1000).then(()=>{
+        attack(playerOneBoard, setPlayerOneBoard);
+        if(hasUserWon(playerOneBoard))
+          setWhichPlayerWon(2);
+      });
+    }
   }
 
   return (
     <Container>
       <h1>Battleships</h1>
       <StartButton onClick={startTheGame}>Start</StartButton>
+      { whichPlayerWon === 1 ? "Player 1 won" : whichPlayerWon === 2 ? "Player 2 won" : ""}
       <Ocean>
         <Wave/>
         <Wave/>

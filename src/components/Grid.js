@@ -82,5 +82,5 @@ function Grid({board}) {
     );
   }
   
-  export default Grid;
+export default Grid;
 
