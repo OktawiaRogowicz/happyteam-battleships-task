@@ -128,11 +128,21 @@ const StartButton = styled.button`
   margin: 0;
   color: #A71D31;
   transition: 0.25s;
+  opacity: ${props => props.showButton ? "1" : "0"};
 
   &:hover, &:active, &:focus {
     cursor: pointer;
     transform: scale(1.2);
   }
+`
+
+const EndGameText = styled.h3`
+  text-transform: uppercase;
+  font-family: 'Squada One', cursive;
+  font-size: 4rem;
+  margin: 0;
+  color: #A71D31;
+  transition: 0.25s;
 `
 
 function hasUserWon(enemyBoard) {
@@ -161,28 +171,30 @@ function App() {
   const [playerOneBoard, setPlayerOneBoard] = useState(Board());
   const [playerTwoBoard, setPlayerTwoBoard] = useState(Board());
   const [whichPlayerWon, setWhichPlayerWon] = useState(null);
+  const [showButton, setShowButton] = useState(true);
 
   async function startTheGame() {
-
-    while(!whichPlayerWon) {
-      await sleep(1000).then(()=>{
-        attack(playerTwoBoard, setPlayerTwoBoard);
-        if(hasUserWon(playerTwoBoard))
-          setWhichPlayerWon(1);
-      });
-      await sleep(1000).then(()=>{
-        attack(playerOneBoard, setPlayerOneBoard);
-        if(hasUserWon(playerOneBoard))
-          setWhichPlayerWon(2);
-      });
+    while(whichPlayerWon === null) {
+      await sleep(100);
+      attack(playerTwoBoard, setPlayerTwoBoard);
+      if(hasUserWon(playerTwoBoard)) {
+        setWhichPlayerWon(1);
+        break;
+      }
+      await sleep(100);
+      attack(playerOneBoard, setPlayerOneBoard);
+      if(hasUserWon(playerOneBoard)) {
+        setWhichPlayerWon(2);
+        break;
+      }
     }
   }
 
   return (
     <Container>
       <h1>Battleships</h1>
-      <StartButton onClick={startTheGame}>Start</StartButton>
-      { whichPlayerWon === 1 ? "Player 1 won" : whichPlayerWon === 2 ? "Player 2 won" : ""}
+      { !whichPlayerWon && <StartButton showButton={showButton} onClick={() => {startTheGame(); setShowButton(false)}}>Start</StartButton>}
+      { whichPlayerWon && <EndGameText>Player {whichPlayerWon} won</EndGameText> }
       <Ocean>
         <Wave/>
         <Wave/>
