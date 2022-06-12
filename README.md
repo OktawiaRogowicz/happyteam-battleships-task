@@ -7,7 +7,7 @@
 <div align="center">
 Interview exercise: prepare a website simulating a game of battleships between two automated players.
 
-<strong>Heroku</strong>: <a href="https://oktawiarogowicz.github.io/happyteam-battleships-task/"><strong>LIVE SITE</strong></a>
+<strong>GitHub Pages</strong>: <a href="https://oktawiarogowicz.github.io/happyteam-battleships-task/"><strong>LIVE SITE</strong></a>
 </div>
 
 <h1><code>Overview</code></h1>
