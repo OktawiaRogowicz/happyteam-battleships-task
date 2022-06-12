@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+<h2 align="center">
+  
+   🚢 <code>BATTLESHIPS</code> 🚢
+  
+</h2>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+Interview exercise: prepare a website simulating a game of battleships between two automated players.
 
-## Available Scripts
+<strong>Heroku</strong>: <a href="neural-network-react.herokuapp.com"><strong>LIVE SITE</strong></a>
+</div>
 
-In the project directory, you can run:
+<h1><code>Overview</code></h1>
 
-### `npm start`
+> During one of my interviews I was asked to prepare a website simulating a game of battleships between two automated players: so I prepared a simple website allowing the user to observe an ongoing game. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/72928120/173248245-18bfb2af-0b09-4cf3-ab5f-20015191890e.png"
+    alt="Screenshot" width="500"/>
+</div>
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+<div align="center">
+  HTML <strong>||</strong> CSS <strong>||</strong> flexbox <strong>||</strong> React <strong>||</strong> Styled components <strong>||</strong> TensorFlow.js
+  
+   Node.js <strong>||</strong> TensorFlow <strong>||</strong> Keras <strong>||</strong> Python
+  
+<strong>Heroku</strong>: <a href="neural-network-react.herokuapp.com"><strong>LIVE SITE</strong></a>
+</div>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Summary
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Even though the logic behind the game itself is very simplified, lacking any resemblance of AI and missing better reasoning of attacking specific square - right now it's just randomized - I still liked the challenge and the result. The desing is simple, but I enjoyed going throught the idea of using CSS perspective and I think it wouldn't be that hard to develop the game further. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### What I learned
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+As I mentioned earlier, it was the first time that I have ever used CSS perspective. Turns out it's not as hard as I thought, but still can look pretty impressive and interesting! 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Continued development
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The logic behind the game itself is very simplified, and if i wanted to take the project further making players attack with more thought put behind it would be first on my list of things to improve.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<h1><code>Author</code></h1>
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Website - [Add your name here](https://www.your-site.com)
+- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
