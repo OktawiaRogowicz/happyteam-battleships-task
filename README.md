@@ -7,7 +7,7 @@
 <div align="center">
 Interview exercise: prepare a website simulating a game of battleships between two automated players.
 
-<strong>Heroku</strong>: <a href="neural-network-react.herokuapp.com"><strong>LIVE SITE</strong></a>
+<strong>GitHub Pages</strong>: <a href="https://oktawiarogowicz.github.io/happyteam-battleships-task/"><strong>LIVE SITE</strong></a>
 </div>
 
 <h1><code>Overview</code></h1>
@@ -23,11 +23,9 @@ Interview exercise: prepare a website simulating a game of battleships between t
 
 
 <div align="center">
-  HTML <strong>||</strong> CSS <strong>||</strong> flexbox <strong>||</strong> React <strong>||</strong> Styled components <strong>||</strong> TensorFlow.js
+  HTML <strong>||</strong> CSS <strong>||</strong> flexbox <strong>||</strong> React <strong>||</strong> Styled components
   
-   Node.js <strong>||</strong> TensorFlow <strong>||</strong> Keras <strong>||</strong> Python
-  
-<strong>Heroku</strong>: <a href="neural-network-react.herokuapp.com"><strong>LIVE SITE</strong></a>
+<strong>GitHub Pages</strong>: <a href="https://oktawiarogowicz.github.io/happyteam-battleships-task/"><strong>LIVE SITE</strong></a>
 </div>
 
 ### Summary
