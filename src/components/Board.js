@@ -1,25 +1,19 @@
 import React, {useEffect,useRef} from "react";
 import styled from 'styled-components';
+import {WIDTH, HEIGHT, DIRECTIONS, SHIPS} from "./boardConfigElements";
 
-const WIDTH = 10;
-const HEIGHT = 10;
 
 function fillBoardWithShips(board) {
-    for(let i = 0; i < 1; i++)
-        while(!createShip(4, board));
-    for(let i = 0; i < 2; i++)
-        while(!createShip(3, board));
-    for(let i = 0; i < 3; i++)
-        while(!createShip(2, board));
-    for(let i = 0; i < 4; i++)
-        while(!createShip(1, board)); 
+    for(let i = 0; i < SHIPS.length; i++) 
+        for(let j = 0; j < SHIPS[i].amount; j++)
+            while(!createShip(SHIPS[i].length, board));
 }
 
 function getCell(x, y) {
-    if(x < 0 || x > 9) {
+    if(x < 0 || x >= WIDTH) {
         return false;
     }
-    if(y < 0 || y > 9) {
+    if(y < 0 || y >= HEIGHT) {
         return false;
     }
     return true;
@@ -51,11 +45,11 @@ function isFillingShipCellPossible(board, x, y) {
 }
 
 function isFillingShipCellsPossible(board, length, x, y, direction) {
-    if(direction == 0) {
+    if(direction === DIRECTIONS.down) {
         for(let i = 0; i < length; i++) {
             if(!isFillingShipCellPossible(board, x, y + i)) return false;
         }
-    } else if(direction == 1) {
+    } else if(direction === DIRECTIONS.right) {
         for(let i = 0; i < length; i++) {
             if(!isFillingShipCellPossible(board, x + i, y)) return false;
         }
@@ -64,13 +58,13 @@ function isFillingShipCellsPossible(board, length, x, y, direction) {
 }
 
 function fillShipCells(board, length, x, y, direction) {
-    if(direction == 0) {
+    if(direction === DIRECTIONS.down) {
         for(let i = 0; i < length; i++) {
             var p = (y + i) * HEIGHT + (x);
             board[p].filled = true;
             changeSiblingCells(board, x, y+i);
         }
-    } else if(direction == 1) {
+    } else if(direction === DIRECTIONS.right) {
         for(let i = 0; i < length; i++) {
             var p = (y) * HEIGHT + (x + i);
             board[p].filled = true;
@@ -79,10 +73,18 @@ function fillShipCells(board, length, x, y, direction) {
     }
 }
 
-function createShip(length, board) {
-    var x = Math.floor(Math.random() * (WIDTH - (length - 1)));
-    var y = Math.floor(Math.random() * (HEIGHT - (length - 1)));
-    var direction = Math.floor(Math.random() * 2);
+function createShip(length, board) {  
+    const keys = Object.keys(DIRECTIONS)
+    const direction = keys[Math.floor(Math.random() * keys.length)]
+    console.log(direction);
+    var x = 0, y = 0;
+    if(direction === DIRECTIONS.down) {
+        y = Math.floor(Math.random() * (HEIGHT - (length - 1)));
+        x = Math.floor(Math.random() * (WIDTH));
+    } else if(direction === DIRECTIONS.right) {
+        y = Math.floor(Math.random() * (HEIGHT));
+        x = Math.floor(Math.random() * (WIDTH - (length - 1)));
+    }
 
     if(!isFillingShipCellsPossible(board, length, x, y, direction))
         return false;
@@ -93,7 +95,12 @@ function createShip(length, board) {
 }
 
 function createBoard() {
-    var squares = new Array(100).fill(null).map((e, index)=> ({"id": index, "filled": false, "isSibling": false, "attacked": false}))
+    var squares = new Array(100).fill(null).map((e, index)=> ({
+        "id": index,
+        "filled": false,
+        "isSibling": false,
+        "attacked": false
+    }));
     fillBoardWithShips(squares);
     return squares;
 }

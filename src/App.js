@@ -29,16 +29,23 @@ const Container = styled.div`
     font-size: 7rem;
     text-transform: uppercase;
     margin: 15% 0 0 0;
-    //font-family: 'Cinzel Decorative', cursive;
-    //font-family: 'Fredericka the Great', cursive;
     font-family: 'Squada One', cursive;
-    //font-family: 'Nixie One', cursive;
     color: #dee5ec;
     background: -webkit-linear-gradient(90deg, rgba(3,89,112,1) 0%, rgba(54,131,148,1) 100%);
     opacity: 0.5;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: 1rem;
+
+    @media (max-width: 768px) {
+      font-size: 4rem;
+      letter-spacing: 0.7rem;
+    }
+
+    @media (max-width: 425px) {
+      font-size: 2rem;
+      letter-spacing: 0.5rem;
+    }
   }
 
   h2 {
@@ -48,6 +55,16 @@ const Container = styled.div`
     letter-spacing: 0.5rem;
     opacity: 0.35;
     color: #BBF0F3;
+
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+      letter-spacing: 0.4rem;
+    }
+
+    @media (max-width: 425px) {
+      font-size: 1.3rem;
+      letter-spacing: 0.3rem;
+    }
   }
 `
 
@@ -112,11 +129,15 @@ const BoardContainer = styled.div`
   transform-style: preserve-3d;
   transform: rotateX(60deg);
 
+  @media (max-width: 425px) {
+    padding: 0 1rem 0 1rem;
+  }
+
   :nth-child(1) {
-      & > * {
-        animation-delay: 1s;
-      }
+    & > * {
+      animation-delay: 1s;
     }
+  }
 `
 
 const StartButton = styled.button`
@@ -129,6 +150,14 @@ const StartButton = styled.button`
   color: #A71D31;
   transition: 0.25s;
   opacity: ${props => props.showButton ? "1" : "0"};
+
+  @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 425px) {
+      font-size: 1.5rem;
+    }
 
   &:hover, &:active, &:focus {
     cursor: pointer;

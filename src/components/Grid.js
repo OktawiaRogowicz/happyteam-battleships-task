@@ -39,6 +39,16 @@ const Container = styled.div`
     border: 2px solid rgb(0, 0, 0, 0.35);
     z-index: 1;
     transition: all .2s;
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(10, 1.7rem);
+        grid-template-rows: repeat(10, 1.7rem);
+    }
+
+    @media (max-width: 425px) {
+        grid-template-columns: repeat(10, 0.75rem);
+        grid-template-rows: repeat(10, 0.75rem);
+    }
 `
 
 const Square = styled.div`
